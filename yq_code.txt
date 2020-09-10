@@ -1,0 +1,44 @@
+import java.io.*;
+import java.util.Scanner;
+
+public class RJGC {
+    public static void main(String[] args) throws IOException {
+                File file = new File("C:/Users/86177/Desktop/大三上学期/软件工程/yq_in.txt");
+                String[] prov = new String[1000];
+                String[] city = new String[1000];
+                String[] num = new String[1000];
+                Scanner cin = new Scanner(file);
+                int flag = 0;
+
+                int len;
+                for(len = 0; cin.hasNext();len++) {
+                    prov[len] = cin.next();
+                    city[len] = cin.next();
+                    num[len] = cin.next();
+                    flag++;
+                }
+
+                len = prov.length;
+
+                for(int i = 0; i < flag; i++) {
+                    System.out.println(prov[i] + "\t" + city[i] + "\t" + num[i]);
+                }
+
+                FileOutputStream fp = new FileOutputStream("C:/Users/86177/Desktop/大三上学期/软件工程/yq_David.txt");
+                PrintStream fpp = new PrintStream(fp);
+                String temp = "0";
+
+                for(int i = 0; i < flag; i++) {
+                    if (!temp.equals(prov[i])) {
+                    	if (i != 0)	fpp.println();
+                        fpp.println(prov[i] + "\t");
+                        temp = prov[i];
+                    }
+                    fpp.println(city[i] + "\t" + num[i]);
+                    
+                }
+                fp.close();
+                cin.close();
+            }
+        }
+	
